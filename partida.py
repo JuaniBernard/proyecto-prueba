@@ -59,8 +59,3 @@ class Partida:
     @palabra_aciertos.setter
     def palabra_aciertos(self, value):
         self._palabra_aciertos = value * len(self._palabra)
-
-
-if __name__ == '__main__':
-    palabra = Partida('python', 2, 'lenguaje', 'Juan')
-    print(palabra.__dict__)
