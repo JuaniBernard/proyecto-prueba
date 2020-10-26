@@ -33,46 +33,28 @@ class Ahorcado:
 
     def dos_jugadores(self):
         services = ServicesPartidas()
-        _nombre1 = input('\n----> \tIngrese el nombre del jugador 1: ')
-        _dificultad1 = int(input('\n----> \tIngrese la dificultad para {}: '
-                                 .format(_nombre1)))
-        _palabra1 = input('\n----> \t¿Qué palabra deberá adivinar '
-                          '{}?: '.format(_nombre1))
-        _tipo_palabra1 = input('\n----> \t¿Qué tipo de palabra es?: ')
-        p1 = services.iniciar_partida(_nombre1, _dificultad1, _palabra1,
-                                      _tipo_palabra1)
-        res1 = 'Continua'
-        while res1 == 'Continua':
-            letra = input('\n----> \tIngrese una letra: ')
-            if letra == 'salir':
-                return True
-            res1 = services.intentar_letra(p1, letra)
-            print('\t', p1._palabra_aciertos)
-        if res1 == 'Gano':
-            print('\n----> \tFelicitaciones {}, adivinaste!'.format(_nombre1))
-        elif res1 == 'Perdio':
-            print('\n----> \tPerdiste {}, mejor suerte la próxima.'
-                  .format(_nombre1))
-        _nombre2 = input('\n----> \tIngrese el nombre del jugador 2: ')
-        _dificultad2 = int(input('\n----> \tIngrese la dificultad para {}: '
-                                 .format(_nombre2)))
-        _palabra2 = input('\n----> \t¿Qué palabra deberá adivinar '
-                          '{}?: '.format(_nombre2))
-        _tipo_palabra2 = input('\n----> \t¿Qué tipo de palabra es?: ')
-        p2 = services.iniciar_partida(_nombre2, _dificultad2, _palabra2,
-                                      _tipo_palabra2)
-        res2 = 'Continua'
-        while res2 == 'Continua':
-            letra = input('\n----> \tIngrese una letra: ')
-            if letra == 'salir':
-                return True
-            res2 = services.intentar_letra(p2, letra)
-            print('\t', p2._palabra_aciertos)
-        if res2 == 'Gano':
-            print('\n----> \tFelicitaciones {}, adivinaste!'.format(_nombre2))
-        elif res2 == 'Perdio':
-            print('\n----> \tPerdiste {}, mejor suerte la próxima.'
-                  .format(_nombre2))
+        for i in range(0, 2):
+            _nombre = input('\n----> \tIngrese el nombre del jugador 1: ')
+            _dificultad = int(input('\n----> \tIngrese la dificultad para {}: '
+                                    .format(_nombre)))
+            _palabra = input('\n----> \t¿Qué palabra deberá adivinar '
+                             '{}?: '.format(_nombre))
+            _tipo_palabra = input('\n----> \t¿Qué tipo de palabra es?: ')
+            i = services.iniciar_partida(_nombre, _dificultad, _palabra,
+                                         _tipo_palabra)
+            res = 'Continua'
+            while res == 'Continua':
+                letra = input('\n----> \tIngrese una letra: ')
+                if letra == 'salir':
+                    return True
+                res = services.intentar_letra(i, letra)
+                print('\t', i._palabra_aciertos)
+            if res == 'Gano':
+                print('\n----> \tFelicitaciones {}, adivinaste!'
+                      .format(_nombre))
+            elif res == 'Perdio':
+                print('\n----> \tPerdiste {}, mejor suerte la próxima.'
+                      .format(_nombre))
         print(RepoPartidas.partidas_list)
         return True
 
