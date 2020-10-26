@@ -61,14 +61,12 @@ class Ahorcado:
 
 if __name__ == '__main__':
     juego = Ahorcado()
-
-    while True:
-        opcion_menu = juego.menu_ahorcado()
-        if opcion_menu == 1:
-            print('\n\tModo: Un jugador')
-            juego.un_jugador()
-        if opcion_menu == 2:
-            print('\n\tModo: Dos jugadores')
-            juego.dos_jugadores()
-        else:
-            break
+    opcion_menu = juego.menu_ahorcado()
+    if opcion_menu == 1:
+        print('\n\tModo: Un jugador')
+        juego.un_jugador()
+    if opcion_menu == 2:
+        print('\n\tModo: Dos jugadores')
+        juego.dos_jugadores()
+    else:
+        print('\n\tHasta luego!')
