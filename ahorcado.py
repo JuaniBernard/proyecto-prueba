@@ -20,21 +20,21 @@ class Ahorcado:
             letra = input('\n----> \tIngrese una letra: ')
             if letra == 'salir':
                 return True
-                break
-            res = services.intentar_letra(p, letra)
+            res = services.intentar_letra(p, letra.upper())
             print('\t', p._palabra_aciertos)
         if res == 'Gano':
-            print('\n----> \tFelicitaciones {}, adivinaste!'.format(_nombre))
+            print('\n----> \tFelicitaciones {}, adivinaste!\n'.format(_nombre))
             return True
         elif res == 'Perdio':
-            print('\n----> \tPerdiste {}, mejor suerte la próxima.'
+            print('\n----> \tPerdiste {}, mejor suerte la próxima.\n'
                   .format(_nombre))
             return False
 
     def dos_jugadores(self):
         services = ServicesPartidas()
         for i in range(0, 2):
-            _nombre = input('\n----> \tIngrese el nombre del jugador 1: ')
+            _nombre = input('\n----> \tIngrese el nombre del jugador {}: '
+                            .format(i+1))
             _dificultad = int(input('\n----> \tIngrese la dificultad para {}: '
                                     .format(_nombre)))
             _palabra = input('\n----> \t¿Qué palabra deberá adivinar '
@@ -47,15 +47,15 @@ class Ahorcado:
                 letra = input('\n----> \tIngrese una letra: ')
                 if letra == 'salir':
                     return True
-                res = services.intentar_letra(i, letra)
+                res = services.intentar_letra(i, letra.upper())
                 print('\t', i._palabra_aciertos)
             if res == 'Gano':
-                print('\n----> \tFelicitaciones {}, adivinaste!'
+                print('\n----> \tFelicitaciones {}, adivinaste!\n'
                       .format(_nombre))
             elif res == 'Perdio':
-                print('\n----> \tPerdiste {}, mejor suerte la próxima.'
+                print('\n----> \tPerdiste {}, mejor suerte la próxima.\n'
                       .format(_nombre))
-        print(RepoPartidas.partidas_list)
+        print(RepoPartidas.partidas_list, "\n")
         return True
 
 
@@ -68,5 +68,5 @@ if __name__ == '__main__':
     if opcion_menu == 2:
         print('\n\tModo: Dos jugadores')
         juego.dos_jugadores()
-    else:
-        print('\n\tHasta luego!')
+    if opcion_menu < 1 or opcion_menu > 2:
+        print('\n\tHasta luego!\n')
